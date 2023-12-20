@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap">
+  
+  <style>
+        body {
+          font-family: 'Roboto', Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      
+    }
+
+    h1, h2, h3 {
+      color: #333;
+    }
+
+    form {
+      max-width: 400px;
+      width: 100%;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 16px;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      background-color: #4caf50;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    #resultado {
+      margin-top: 20px;
+      padding: 0px;
+      background-color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+
+    #resultado h3 {
+      color: #4caf50;
+    }
+
+       #center {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      margin-top: 55px; /* Adicionei esta linha para ajustar a margem superior */
+      width: 100%; /* Set width to 100% */
+
+    }
+
+    #botoesOperacao {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    #localizarFilialForm {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      background-color: #fff;
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    #localizarFilialForm label {
+      margin-bottom: 5px;
+    }
+
+     /* Popup Styles */
+     .popup {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+      z-index: 1;
+    }
+
+    .popup-content {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      max-width: 80%;
+      overflow: auto;
+      position: relative;
+    }
+
+    .popup-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .align-items-center {
+  align-items: center;
+  justify-content: space-around;
+  display: flex;
+  flex-direction: row;
+  width: 100%; /* Set width to 100% */
+  background-color: #AE2E2A;
+}
+
+footer {
+      background-color: #f4f4f4;
+      padding: 10px 20px;
+      text-align: center;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+
+    footer a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+    @media only screen and (max-width: 600px) {
+  body {
+    padding: 10px;
+  }
+
+  #localizarFilialForm {
+    position: static;
+    margin-top: 10px;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  #center {
+    margin-top: 10px;
+  }
+
+  #botoesOperacao {
+    flex-direction: column;
+  }
+
+  footer {
+    position: static;
+    bottom: auto;
+    padding: 10px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  #localizarFilialForm {
+    position: static;
+    margin-top: 10px;
+    border-radius: 0;
+    box-shadow: none;
+  }
+}
+
+/* Adicione esta regra CSS para telas menores que 600px */
+@media only screen and (max-width: 600px) {
+  #localizarFilialForm {
+    position: static;
+    margin-top: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+}
+
+
+
+
+
+/* Mantenha esta regra original para telas maiores que 600px */
+#localizarFilialForm {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Adicione esta regra para ajustar o estilo da label */
+#localizarFilialForm label {
+  margin-bottom: 5px;
+  display: block;
+}
+
+/* Adicione esta regra para ajustar o estilo do input */
+#localizarFilialForm input {
+  width: calc(100% - 20px); /* Leve em consideração o padding de 10px em cada lado */
+  padding: 8px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+
+  </style>
+  <title>Plantonista App</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="android-chrome-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+</head>
+
+<body>
+    <!-- Popup de Resultado da Consulta -->
+    <div id="popup" class="popup">
+      <div class="popup-content">
+        <span class="popup-close" onclick="fecharPopup()">&times;</span>
+        <div id="popup-resultado"></div>
+      </div>
+    </div>
+
+  <div id="localizarFilialForm" >
+    
+    <label for="cidadeLocalizar"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="18" viewBox="0 0 24 24" style="margin-top: -4px;"><defs><style>.a{fill:none;}.b{fill:#f0b900;}</style></defs><path class="a" d="M0,0H24V24H0Z"></path><path class="b" d="M12,12a2,2,0,1,1,2-2A2.006,2.006,0,0,1,12,12Zm6-1.8a6,6,0,1,0-12,0c0,2.34,1.95,5.44,6,9.14C16.05,15.64,18,12.54,18,10.2ZM12,2a7.955,7.955,0,0,1,8,8.2q0,4.98-8,11.8-8-6.825-8-11.8A7.955,7.955,0,0,1,12,2Z"></path></svg>Localizar Filial:</label >
+      
+    <input type="text" id="cidadeLocalizar" placeholder="Digite a cidade">
+    <button onclick="localizarFilial()">Verificar</button>
+  </div>
+  <div class="align-items-center" >
+    <img src="https://assinedesktop.com/static/img/new/logo-2x-low.png" alt="" height="50px" class="img-responsive">
+  </div>
+  <h1 id="center">Plantonista App</h1>
+
+  <div id="botoesOperacao">
+    <button onclick="mostrarFormulario('cadastro')">Cadastro</button>
+    <button onclick="mostrarFormulario('consulta')">Consulta</button>
+  </div>
+
+  <!-- Formulário de Cadastro -->
+  <form id="cadastroForm" style="display:none;">
+    <h2>Cadastrar Informações</h2>
+    <label for="nomePlantonista">Nome do Plantonista:</label>
+    <input type="text" id="nomePlantonista" required>
+
+    <label for="nomeFiliaCadastro">Nome da Filial:</label>
+    <select id="nomeFiliaCadastro" onchange="carregarCidades()" required>
+      <option value="">Selecione uma Filial</option>
+      <option value="netbarretos">NetBarretos</option>
+      <option value="clig">CLIG</option>
+      <option value="desktop">Desktop</option>
+    </select>
+
+    <label for="telefone">Telefone:</label>
+    <input type="tel" id="telefone" required>
+
+    <label for="dataInicio">Data de Início do Plantão:</label>
+    <input type="date" id="dataInicio" required>
+    
+    <label for="dataFim">Data de Término do Plantão:</label>
+    <input type="date" id="dataFim" required>
+
+    <label for="horarioInicio">Horário de Início do Plantão:</label>
+    <input type="time" id="horarioInicio" required>
+
+    <label for="horarioFim">Horário de Fim do Plantão:</label>
+    <input type="time" id="horarioFim" required>
+
+    <button type="button" onclick="cadastrar()">Cadastrar</button>
+  </form>
+
+  <!-- Formulário de Consulta -->
+  <form id="consultaForm" style="display:none;">
+    <h2>Consultar Informações</h2>
+    <label for="consultaData">Data:</label>
+    <input type="date" id="consultaData" required>
+
+    <label for="filtroFilial">Filtrar por Filial:</label>
+    <select id="filtroFilial" onchange="carregarCidadesConsulta()">
+      <option value="">Todas as Filiais</option>
+      <option value="netbarretos">NetBarretos</option>
+      <option value="clig">CLIG</option>
+      <option value="desktop">Desktop</option>
+    </select>
+
+    <button type="button" onclick="consultar()">Consultar</button>
+  </form>
+
+  <div id="resultado"></div>
+
+  
+  <footer>
+    <p>
+      Desenvolvido por <a href="https://www.linkedin.com/in/bruno-manzini-mori-a9b138b5/" target="_blank">Bruno Manzini</a>
+    </p>
+  </footer>
+
+  <script>
+    function mostrarPopup(htmlResultado) {
+      const popup = document.getElementById('popup');
+      const popupResultado = document.getElementById('popup-resultado');
+      popupResultado.innerHTML = htmlResultado;
+      popup.style.display = 'flex';
+    }
+
+    function fecharPopup() {
+      const popup = document.getElementById('popup');
+      popup.style.display = 'none';
+      limparResultado(); // Limpar resultado ao fechar o popup
+    }
+    
+
+    
+    const plantonistas = [];
+
+    const filiaisCidades = {
+      clig: ["araraquara", "sao carlos", "americo brasiliense", "ibate", "ibitinga"],
+      netbarretos: ["franca", "olandia", "batatais"],
+      desktop: ["hortolandia", "paulinia", "sumare"]
+    };
+
+    function localizarFilial() {
+      const cidadeLocalizar = document.getElementById('cidadeLocalizar').value.toLowerCase();
+      let filialEncontrada = '';
+
+      for (const filial in filiaisCidades) {
+        if (filiaisCidades[filial].includes(cidadeLocalizar)) {
+          filialEncontrada = filial;
+          break;
+        }
+      }
+
+      if (filialEncontrada) {
+        alert(`A cidade ${cidadeLocalizar} pertence à filial ${filialEncontrada.toUpperCase()}.`);
+      } else {
+        alert(`Não foi encontrada uma filial para a cidade ${cidadeLocalizar}.`);
+      }
+    }
+
+    // Função para limpar o conteúdo da div de resultado
+    function limparResultado() {
+      const resultadoDiv = document.getElementById('resultado');
+      resultadoDiv.innerHTML = '';
+    }
+
+    // Função para mostrar o formulário desejado
+    function mostrarFormulario(tipoFormulario) {
+      limparResultado(); // Limpar resultado ao mudar de formulário
+      const cadastroForm = document.getElementById('cadastroForm');
+      const consultaForm = document.getElementById('consultaForm');
+
+      cadastroForm.style.display = 'none';
+      consultaForm.style.display = 'none';
+
+      if (tipoFormulario === 'cadastro') {
+        cadastroForm.style.display = 'block';
+      } else if (tipoFormulario === 'consulta') {
+        consultaForm.style.display = 'block';
+      }
+    }
+
+    function cadastrar() {
+      limparResultado(); // Limpar resultado ao cadastrar
+      const nomePlantonista = document.getElementById('nomePlantonista').value;
+      const nomeFilia = document.getElementById('nomeFiliaCadastro').value;
+      const telefone = document.getElementById('telefone').value;
+      const dataInicio = document.getElementById('dataInicio').value;
+      const dataFim = document.getElementById('dataFim').value;
+      const horarioInicio = document.getElementById('horarioInicio').value;
+      const horarioFim = document.getElementById('horarioFim').value;
+
+      const cadastro = {
+        nomePlantonista,
+        nomeFilia,
+        telefone,
+        dataInicio,
+        dataFim,
+        horarioInicio,
+        horarioFim,
+      };
+
+      plantonistas.push(cadastro);
+      alert('Cadastro realizado com sucesso!');
+      limparCamposCadastro();
+    }
+
+    function limparCamposCadastro() {
+      document.getElementById('nomePlantonista').value = '';
+      document.getElementById('nomeFiliaCadastro').value = '';
+      document.getElementById('telefone').value = '';
+      document.getElementById('dataInicio').value = '';
+      document.getElementById('dataFim').value = '';
+      document.getElementById('horarioInicio').value = '';
+      document.getElementById('horarioFim').value = '';
+    }    function carregarCidades() {
+      const filialSelecionada = document.getElementById('nomeFiliaCadastro').value;
+      const cidadeCadastroSelect = document.getElementById('cidadeCadastro');
+
+      cidadeCadastroSelect.innerHTML = '';
+
+      if (filialSelecionada in filiaisCidades) {
+        filiaisCidades[filialSelecionada].forEach(cidade => {
+          const option = document.createElement('option');
+          option.value = cidade;
+          option.textContent = cidade;
+          cidadeCadastroSelect.appendChild(option);
+        });
+      }
+    }
+
+    function carregarCidadesConsulta() {
+      const filialSelecionada = document.getElementById('filtroFilial').value;
+      const filtroCidadeInput = document.getElementById('filtroCidade');
+
+      filtroCidadeInput.value = '';
+
+      if (filialSelecionada in filiaisCidades && filialSelecionada !== 'naoSei') {
+        filtroCidadeInput.placeholder = `Todas as cidades de ${filialSelecionada}`;
+      } else {
+        filtroCidadeInput.placeholder = 'Todas as cidades';
+      }
+    }
+
+    function consultar() {
+      const consultaData = document.getElementById('consultaData').value;
+      const filtroFilial = document.getElementById('filtroFilial').value;
+
+      const [ano, mes, dia] = consultaData.split("-");
+      const consultaDate = new Date(ano, mes - 1, dia); // Subtrai 1 do mês, pois em JavaScript, janeiro é 0 e dezembro é 11
+
+      const resultados = plantonistas.filter(plantonista => {
+        const [plantaoInicioAno, plantaoInicioMes, plantaoInicioDia] = plantonista.dataInicio.split("-");
+        const plantaoInicioDate = new Date(plantaoInicioAno, plantaoInicioMes - 1, plantaoInicioDia);
+
+        const [plantaoFimAno, plantaoFimMes, plantaoFimDia] = plantonista.dataFim.split("-");
+        const plantaoFimDate = new Date(plantaoFimAno, plantaoFimMes - 1, plantaoFimDia);
+
+        return (
+          plantaoInicioDate <= consultaDate &&
+          plantaoFimDate >= consultaDate &&
+          ((filtroFilial === 'naoSei') ||
+            (filtroFilial === '' || plantonista.nomeFilia === filtroFilial))
+        );
+      });
+
+      const resultadoDiv = document.getElementById('resultado');
+      resultadoDiv.innerHTML = '';
+
+      if (resultados.length > 0) {
+        let htmlResultado = '<h3>Resultados da Consulta:</h3>';
+        resultados.forEach(resultado => {
+          htmlResultado += `<p>${resultado.nomePlantonista} está de plantão na filial ${resultado.nomeFilia} de ${resultado.dataInicio} a ${resultado.dataFim}. Horário: ${resultado.horarioInicio} - ${resultado.horarioFim}. Telefone: ${resultado.telefone}</p>`;
+        });
+
+        mostrarPopup(htmlResultado);
+      } else {
+        mostrarPopup('<p>Nenhum resultado encontrado para a data e/ou filial selecionadas.</p>');
+      }
+    }
+    function mostrarFormulario(tipoFormulario) {
+    limparResultado(); // Limpar resultado ao mudar de formulário
+    const cadastroForm = document.getElementById('cadastroForm');
+    const consultaForm = document.getElementById('consultaForm');
+    const footer = document.querySelector('footer');
+
+    cadastroForm.style.display = 'none';
+    consultaForm.style.display = 'none';
+
+    // Ocultar o footer se estiver no formulário de cadastro
+    if (tipoFormulario === 'cadastro') {
+      cadastroForm.style.display = 'block';
+      footer.style.display = 'none';
+    } else if (tipoFormulario === 'consulta') {
+      consultaForm.style.display = 'block';
+      footer.style.display = 'block'; // Mostrar o footer para outros formulários
+    }
+  }
+  </script>
+</body>
+</html>
