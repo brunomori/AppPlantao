@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap">
   
   <style>
+    
         body {
           font-family: 'Roboto', Arial, sans-serif;
       background-color: #f4f4f4;
@@ -492,41 +493,53 @@ footer {
     }
 
     function consultar() {
-      const consultaData = document.getElementById('consultaData').value;
-      const filtroFilial = document.getElementById('filtroFilial').value;
+  const consultaData = document.getElementById('consultaData').value;
+  const filtroFilial = document.getElementById('filtroFilial').value;
 
-      const [ano, mes, dia] = consultaData.split("-");
-      const consultaDate = new Date(ano, mes - 1, dia); // Subtrai 1 do mês, pois em JavaScript, janeiro é 0 e dezembro é 11
+  const [anoConsulta, mesConsulta, diaConsulta] = consultaData.split('-');
 
-      const resultados = plantonistas.filter(plantonista => {
-        const [plantaoInicioAno, plantaoInicioMes, plantaoInicioDia] = plantonista.dataInicio.split("-");
-        const plantaoInicioDate = new Date(plantaoInicioAno, plantaoInicioMes - 1, plantaoInicioDia);
+  const plantonistasFiltrados = plantonistas.filter(plantonista => {
+    const [anoPlantonista, mesPlantonista, diaPlantonista] = plantonista.dataInicio.split('-');
+    return (
+      anoConsulta === anoPlantonista &&
+      mesConsulta === mesPlantonista &&
+      diaConsulta === diaPlantonista &&
+      (filtroFilial === '' || plantonista.nomeFilia === filtroFilial)
+    );
+  });
 
-        const [plantaoFimAno, plantaoFimMes, plantaoFimDia] = plantonista.dataFim.split("-");
-        const plantaoFimDate = new Date(plantaoFimAno, plantaoFimMes - 1, plantaoFimDia);
+  let htmlResultado = `<h3>Plantonistas de ${consultaData}</h3>`;
+  if (plantonistasFiltrados.length > 0) {
+    htmlResultado += `
+      <table>
+        <thead>
+          <tr>
+            <th style ="padding-right: 30px;">Nome</th>
+            <th style ="padding-right: 30px;">Filial</th>
+            <th style ="padding-right: 54px;">Telefone</th>
+            <th style ="padding-right: 30px;">Horário</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${plantonistasFiltrados.map(plantonista => {
+            return `
+              <tr>
+                <td>${plantonista.nomePlantonista}</td>
+                <td>${plantonista.nomeFilia}</td>
+                <td>${plantonista.telefone}</td>
+                <td>${plantonista.horarioInicio} - ${plantonista.horarioFim}</td>
+              </tr>
+            `;
+          }).join('')}
+        </tbody>
+      </table>
+    `;
+  } else {
+    htmlResultado += '<p>Nenhum resultado encontrado para a data e/ou filial selecionadas.</p>';
+  }
 
-        return (
-          plantaoInicioDate <= consultaDate &&
-          plantaoFimDate >= consultaDate &&
-          ((filtroFilial === 'naoSei') ||
-            (filtroFilial === '' || plantonista.nomeFilia === filtroFilial))
-        );
-      });
-
-      const resultadoDiv = document.getElementById('resultado');
-      resultadoDiv.innerHTML = '';
-
-      if (resultados.length > 0) {
-        let htmlResultado = '<h3>Resultados da Consulta:</h3>';
-        resultados.forEach(resultado => {
-          htmlResultado += `<p>${resultado.nomePlantonista} está de plantão na filial ${resultado.nomeFilia} de ${resultado.dataInicio} a ${resultado.dataFim}. Horário: ${resultado.horarioInicio} - ${resultado.horarioFim}. Telefone: ${resultado.telefone}</p>`;
-        });
-
-        mostrarPopup(htmlResultado);
-      } else {
-        mostrarPopup('<p>Nenhum resultado encontrado para a data e/ou filial selecionadas.</p>');
-      }
-    }
+  mostrarPopup(htmlResultado);
+}
     function mostrarFormulario(tipoFormulario) {
     limparResultado(); // Limpar resultado ao mudar de formulário
     const cadastroForm = document.getElementById('cadastroForm');
