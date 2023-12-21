@@ -511,29 +511,39 @@ footer {
   let htmlResultado = `<h3>Plantonistas de ${consultaData}</h3>`;
   if (plantonistasFiltrados.length > 0) {
     htmlResultado += `
-      <table>
-        <thead>
+  <table>
+    <thead>
+      <tr>
+        <th style="padding-right: 30px;">Nome</th>
+        <th style="padding-right: 30px;">Filial</th>
+        <th style="padding-right: 54px;">Telefone</th>
+        <th style="padding-right: 30px;">Horário</th>
+        <th style="padding-right: 72px;">Whatsapp</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${plantonistasFiltrados.map(plantonista => {
+        return `
           <tr>
-            <th style ="padding-right: 30px;">Nome</th>
-            <th style ="padding-right: 30px;">Filial</th>
-            <th style ="padding-right: 54px;">Telefone</th>
-            <th style ="padding-right: 30px;">Horário</th>
+            <td>${plantonista.nomePlantonista}</td>
+            <td>${plantonista.nomeFilia}</td>
+            <td>${plantonista.telefone}</td>
+            <td>${plantonista.horarioInicio} - ${plantonista.horarioFim}</td>
+            <td>
+              <img
+                src="3670051.png"
+                alt="Chat com o plantonista"
+                width="40"
+                height="40"
+                onclick="window.open('https://api.whatsapp.com/send?phone=${55+plantonista.telefone}', '_blank')"style="padding-right: 0px;padding-left: 18px;"
+              />
+            </td>
           </tr>
-        </thead>
-        <tbody>
-          ${plantonistasFiltrados.map(plantonista => {
-            return `
-              <tr>
-                <td>${plantonista.nomePlantonista}</td>
-                <td>${plantonista.nomeFilia}</td>
-                <td>${plantonista.telefone}</td>
-                <td>${plantonista.horarioInicio} - ${plantonista.horarioFim}</td>
-              </tr>
-            `;
-          }).join('')}
-        </tbody>
-      </table>
-    `;
+        `;
+      }).join('')}
+    </tbody>
+  </table>
+`;
   } else {
     htmlResultado += '<p>Nenhum resultado encontrado para a data e/ou filial selecionadas.</p>';
   }
