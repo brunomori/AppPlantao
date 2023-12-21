@@ -4,7 +4,6 @@
   
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap">
   
   <style>
@@ -74,15 +73,14 @@
       color: #4caf50;
     }
 
-       #center {
-      display: flex;
-      align-items: center;
-      flex-direction: column;
-      margin-top: 55px; /* Adicionei esta linha para ajustar a margem superior */
-      width: 100%; /* Set width to 100% */
 
-    }
-
+    #center {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 28px;
+    width: 100%;
+}
     #botoesOperacao {
       display: flex;
       gap: 10px;
@@ -139,13 +137,29 @@
     }
 
     .align-items-center {
-  align-items: center;
-  justify-content: space-around;
-  display: flex;
-  flex-direction: row;
-  width: 100%; /* Set width to 100% */
-  background-color: #AE2E2A;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin-top: 64px;
+    margin-bottom: 0px;
+    align-items: center;
+    justify-content: space-around;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    background-color: #AE2E2A;
+    z-index: -1;
+    height: 50px;
+    max-height: 10%;
 }
+
+.align-items-center img {
+  width: auto;
+  height: 80%; /* Ajuste conforme necessário */
+  max-width: 100%; /* Garante que a imagem não ultrapasse sua largura original */
+}
+
 
 footer {
       background-color: #f4f4f4;
@@ -161,10 +175,10 @@ footer {
       color: #333;
       font-weight: bold;
     }
-    @media only screen and (max-width: 600px) {
-  body {
-    padding: 10px;
-  }
+
+
+#cadastroForm #localizarFilialForm {
+  display: block;
 
   #localizarFilialForm {
     position: static;
@@ -187,41 +201,27 @@ footer {
     padding: 10px;
   }
 }
-@media only screen and (max-width: 600px) {
-  #localizarFilialForm {
-    position: static;
-    margin-top: 10px;
-    border-radius: 0;
-    box-shadow: none;
-  }
-}
 
-/* Adicione esta regra CSS para telas menores que 600px */
-@media only screen and (max-width: 600px) {
-  #localizarFilialForm {
-    position: static;
-    margin-top: 10px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-}
-
+@media  screen and (max-width: 600px) {
+ #localizarFilialForm{
+  display: block;
+ }}
 
 
 
 
 /* Mantenha esta regra original para telas maiores que 600px */
 #localizarFilialForm {
-  position: fixed;
-  top: 10px;
-  right: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  background-color: #fff;
-  padding: 10px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex-wrap: nowrap;
 }
 
 /* Adicione esta regra para ajustar o estilo da label */
@@ -240,6 +240,33 @@ footer {
   border-radius: 4px;
 }
 
+/* *************** */
+#cadastroForm {
+  margin-top: 20px;
+}
+
+#cadastroForm h2 {
+  margin-bottom: 20px;
+}
+
+#cadastroForm label {
+  margin-top: 10px;
+}
+
+#cadastroForm input,
+#cadastroForm select,
+#cadastroForm button {
+  margin-bottom: 15px;
+}
+
+
+#cadastroForm button {
+  width: 100%;
+}
+
+.botao{
+  width: 100%;
+}
 
   </style>
   <title>Plantonista App</title>
@@ -250,6 +277,7 @@ footer {
 </head>
 
 <body>
+
     <!-- Popup de Resultado da Consulta -->
     <div id="popup" class="popup">
       <div class="popup-content">
@@ -259,12 +287,13 @@ footer {
     </div>
 
   <div id="localizarFilialForm" >
-    
+
     <label for="cidadeLocalizar"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="18" viewBox="0 0 24 24" style="margin-top: -4px;"><defs><style>.a{fill:none;}.b{fill:#f0b900;}</style></defs><path class="a" d="M0,0H24V24H0Z"></path><path class="b" d="M12,12a2,2,0,1,1,2-2A2.006,2.006,0,0,1,12,12Zm6-1.8a6,6,0,1,0-12,0c0,2.34,1.95,5.44,6,9.14C16.05,15.64,18,12.54,18,10.2ZM12,2a7.955,7.955,0,0,1,8,8.2q0,4.98-8,11.8-8-6.825-8-11.8A7.955,7.955,0,0,1,12,2Z"></path></svg>Localizar Filial:</label >
-      
     <input type="text" id="cidadeLocalizar" placeholder="Digite a cidade">
     <button onclick="localizarFilial()">Verificar</button>
   </div>
+
+  
   <div class="align-items-center" >
     <img src="https://assinedesktop.com/static/img/new/logo-2x-low.png" alt="" height="50px" class="img-responsive">
   </div>
@@ -276,6 +305,7 @@ footer {
   </div>
 
   <!-- Formulário de Cadastro -->
+  
   <form id="cadastroForm" style="display:none;">
     <h2>Cadastrar Informações</h2>
     <label for="nomePlantonista">Nome do Plantonista:</label>
@@ -321,7 +351,7 @@ footer {
       <option value="desktop">Desktop</option>
     </select>
 
-    <button type="button" onclick="consultar()">Consultar</button>
+    <button type="button" class="botao" onclick="consultar()">Consultar</button>
   </form>
 
   <div id="resultado"></div>
@@ -334,6 +364,8 @@ footer {
   </footer>
 
   <script>
+
+    
     function mostrarPopup(htmlResultado) {
       const popup = document.getElementById('popup');
       const popupResultado = document.getElementById('popup-resultado');
