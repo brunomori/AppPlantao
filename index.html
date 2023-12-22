@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap">
-  
+
   <style>
-    
-        body {
-          font-family: 'Roboto', Arial, sans-serif;
+    body {
+      font-family: 'Roboto', Arial, sans-serif;
       background-color: #f4f4f4;
       margin: 0;
       padding: 0;
@@ -18,10 +18,12 @@
       align-items: center;
       justify-content: center;
       height: 100vh;
-      
+
     }
 
-    h1, h2, h3 {
+    h1,
+    h2,
+    h3 {
       color: #333;
     }
 
@@ -40,7 +42,8 @@
       margin-bottom: 8px;
     }
 
-    input, select {
+    input,
+    select {
       width: 100%;
       padding: 8px;
       margin-bottom: 16px;
@@ -56,6 +59,7 @@
       border: none;
       border-radius: 4px;
       cursor: pointer;
+      margin-bottom: 6px;
     }
 
     button:hover {
@@ -76,12 +80,13 @@
 
 
     #center {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    margin-top: 28px;
-    width: 100%;
-}
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      margin-top: 28px;
+      width: 100%;
+    }
+
     #botoesOperacao {
       display: flex;
       gap: 10px;
@@ -105,8 +110,8 @@
       margin-bottom: 5px;
     }
 
-     /* Popup Styles */
-     .popup {
+    /* Popup Styles */
+    .popup {
       display: none;
       position: fixed;
       top: 0;
@@ -138,31 +143,33 @@
     }
 
     .align-items-center {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    margin-top: 64px;
-    margin-bottom: 0px;
-    align-items: center;
-    justify-content: space-around;
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    background-color: #AE2E2A;
-    z-index: -1;
-    height: 50px;
-    max-height: 10%;
-}
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      margin-top: 64px;
+      margin-bottom: 0px;
+      align-items: center;
+      justify-content: space-around;
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      background-color: #AE2E2A;
+      z-index: -1;
+      height: 50px;
+      max-height: 10%;
+    }
 
-.align-items-center img {
-  width: auto;
-  height: 80%; /* Ajuste conforme necessário */
-  max-width: 100%; /* Garante que a imagem não ultrapasse sua largura original */
-}
+    .align-items-center img {
+      width: auto;
+      height: 80%;
+      /* Ajuste conforme necessário */
+      max-width: 100%;
+      /* Garante que a imagem não ultrapasse sua largura original */
+    }
 
 
-footer {
+    footer {
       background-color: #f4f4f4;
       padding: 10px 20px;
       text-align: center;
@@ -178,135 +185,162 @@ footer {
     }
 
 
-#cadastroForm #localizarFilialForm {
-  display: block;
+    #cadastroForm #localizarFilialForm {
+      display: block;
 
-  #localizarFilialForm {
-    position: static;
-    margin-top: 10px;
-    border-radius: 0;
-    box-shadow: none;
-  }
+      #localizarFilialForm {
+        position: static;
+        margin-top: 10px;
+        border-radius: 0;
+        box-shadow: none;
+      }
 
-  #center {
-    margin-top: 10px;
-  }
+      #center {
+        margin-top: 10px;
+      }
 
-  #botoesOperacao {
-    flex-direction: column;
-  }
+      #botoesOperacao {
+        flex-direction: column;
+      }
 
-  footer {
-    position: static;
-    bottom: auto;
-    padding: 10px;
-  }
-}
+      footer {
+        position: static;
+        bottom: auto;
+        padding: 10px;
+      }
+    }
 
-@media  screen and (max-width: 600px) {
- #localizarFilialForm{
-  display: block;
- }}
-
-
-
-
-/* Mantenha esta regra original para telas maiores que 600px */
-#localizarFilialForm {
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    display: flex;
-    align-items: center;
-    background-color: #fff;
-    padding: 10px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    flex-wrap: nowrap;
-}
-
-/* Adicione esta regra para ajustar o estilo da label */
-#localizarFilialForm label {
-  margin-bottom: 5px;
-  display: block;
-}
-
-/* Adicione esta regra para ajustar o estilo do input */
-#localizarFilialForm input {
-  width: calc(100% - 20px); /* Leve em consideração o padding de 10px em cada lado */
-  padding: 8px;
-  margin-bottom: 10px;
-  box-sizing: border-box;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-/* *************** */
-#cadastroForm {
-  margin-top: 20px;
-}
-
-#cadastroForm h2 {
-  margin-bottom: 20px;
-}
-
-#cadastroForm label {
-  margin-top: 10px;
-}
-
-#cadastroForm input,
-#cadastroForm select,
-#cadastroForm button {
-  margin-bottom: 15px;
-}
+    @media screen and (max-width: 600px) {
+      #localizarFilialForm {
+        display: block;
+      }
+    }
 
 
-#cadastroForm button {
-  width: 100%;
-}
 
-.botao{
-  width: 100%;
-}
 
+    /* Mantenha esta regra original para telas maiores que 600px */
+    #localizarFilialForm {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      display: flex;
+      align-items: center;
+      background-color: #fff;
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      flex-wrap: nowrap;
+    }
+
+    /* Adicione esta regra para ajustar o estilo da label */
+    #localizarFilialForm label {
+      margin-bottom: 5px;
+      display: block;
+    }
+
+    /* Adicione esta regra para ajustar o estilo do input */
+    #localizarFilialForm input {
+      width: calc(100% - 20px);
+      /* Leve em consideração o padding de 10px em cada lado */
+      padding: 8px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    /* *************** */
+    #cadastroForm {
+      margin-top: 20px;
+    }
+
+    #cadastroForm h2 {
+      margin-bottom: 20px;
+    }
+
+    #cadastroForm label {
+      margin-top: 10px;
+    }
+
+    #cadastroForm input,
+    #cadastroForm select,
+    #cadastroForm button {
+      margin-bottom: 15px;
+    }
+
+
+    #cadastroForm button {
+      width: 100%;
+    }
+
+    .botao {
+      width: 100%;
+    }
   </style>
   <title>Plantonista App</title>
   <link rel="apple-touch-icon" sizes="180x180" href="android-chrome-192x192.png">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
 </head>
 
 <body>
 
-    <!-- Popup de Resultado da Consulta -->
-    <div id="popup" class="popup">
-      <div class="popup-content">
-        <span class="popup-close" onclick="fecharPopup()">&times;</span>
-        <div id="popup-resultado"></div>
-      </div>
+  <!-- Popup de Resultado da Consulta -->
+  <div id="popup" class="popup">
+    <div class="popup-content">
+      <span class="popup-close" onclick="fecharPopup()">&times;</span>
+      <div id="popup-resultado"></div>
     </div>
-
-  <div id="localizarFilialForm" >
-
-    <label for="cidadeLocalizar"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="18" viewBox="0 0 24 24" style="margin-top: -4px;"><defs><style>.a{fill:none;}.b{fill:#f0b900;}</style></defs><path class="a" d="M0,0H24V24H0Z"></path><path class="b" d="M12,12a2,2,0,1,1,2-2A2.006,2.006,0,0,1,12,12Zm6-1.8a6,6,0,1,0-12,0c0,2.34,1.95,5.44,6,9.14C16.05,15.64,18,12.54,18,10.2ZM12,2a7.955,7.955,0,0,1,8,8.2q0,4.98-8,11.8-8-6.825-8-11.8A7.955,7.955,0,0,1,12,2Z"></path></svg>Localizar Filial:</label >
-    <input type="text" id="cidadeLocalizar" placeholder="Digite a cidade">
-    <button onclick="localizarFilial()">Verificar</button>
   </div>
 
+
+  <div id="localizarFilialForm">
+
+    <label for="cidadeLocalizar"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="18" viewBox="0 0 24 24"
+        style="margin-top: -4px;">
+        <defs>
+          <style>
+            .a {
+              fill: none;
+            }
+
+            .b {
+              fill: #f0b900;
+            }
+          </style>
+        </defs>
+        <path class="a" d="M0,0H24V24H0Z"></path>
+        <path class="b"
+          d="M12,12a2,2,0,1,1,2-2A2.006,2.006,0,0,1,12,12Zm6-1.8a6,6,0,1,0-12,0c0,2.34,1.95,5.44,6,9.14C16.05,15.64,18,12.54,18,10.2ZM12,2a7.955,7.955,0,0,1,8,8.2q0,4.98-8,11.8-8-6.825-8-11.8A7.955,7.955,0,0,1,12,2Z">
+        </path>
+      </svg>Localizar Filial:</label>
+    <input type="text" id="cidadeLocalizar" placeholder="Digite a cidade">
+    <button onclick="localizarFilial()">Verificar</button>
+    <iframe id="iframe-mapa" src="https://www.google.com/maps/d/embed?mid=1Me5MKZiG55diGOIpA9JM6N0zCeIpLio&ehbc=2E312F"
+      width="540" height="380" style="display: none;"></iframe>
+      <button id="fecharMapa" onclick="fecharMapa()" style="display: none;">Fechar</button>
+      <button id="botao-mapa" onclick="abrirMapa()">Visualizar Mapa</button>
+
+  </div>
   
-  <div class="align-items-center" >
+
+
+
+
+  <div class="align-items-center">
     <img src="https://assinedesktop.com/static/img/new/logo-2x-low.png" alt="" height="50px" class="img-responsive">
   </div>
   <h1 id="center">Plantonista App</h1>
 
   <div id="botoesOperacao">
-    <button onclick="mostrarFormulario('cadastro')">Cadastro</button>
-    <button onclick="mostrarFormulario('consulta')">Consulta</button>
+<button id="botao-cadastro" onclick="mostrarFormulario('cadastro')">Cadastro</button>
+<button id="botao-consulta" onclick="mostrarFormulario('consulta')">Consulta</button>
   </div>
 
   <!-- Formulário de Cadastro -->
-  
+
   <form id="cadastroForm" style="display:none;">
     <h2>Cadastrar Informações</h2>
     <label for="nomePlantonista">Nome do Plantonista:</label>
@@ -325,7 +359,7 @@ footer {
 
     <label for="dataInicio">Data de Início do Plantão:</label>
     <input type="date" id="dataInicio" required>
-    
+
     <label for="dataFim">Data de Término do Plantão:</label>
     <input type="date" id="dataFim" required>
 
@@ -357,16 +391,17 @@ footer {
 
   <div id="resultado"></div>
 
-  
+
   <footer>
     <p>
-      Desenvolvido por <a href="https://www.linkedin.com/in/bruno-manzini-mori-a9b138b5/" target="_blank">Bruno Manzini</a>
+      Desenvolvido por <a href="https://www.linkedin.com/in/bruno-manzini-mori-a9b138b5/" target="_blank">Bruno
+        Manzini</a>
     </p>
   </footer>
 
   <script>
 
-    
+
     function mostrarPopup(htmlResultado) {
       const popup = document.getElementById('popup');
       const popupResultado = document.getElementById('popup-resultado');
@@ -379,9 +414,9 @@ footer {
       popup.style.display = 'none';
       limparResultado(); // Limpar resultado ao fechar o popup
     }
-    
 
-    
+
+
     const plantonistas = [];
 
     const filiaisCidades = {
@@ -463,7 +498,7 @@ footer {
       document.getElementById('dataFim').value = '';
       document.getElementById('horarioInicio').value = '';
       document.getElementById('horarioFim').value = '';
-    }    function carregarCidades() {
+    } function carregarCidades() {
       const filialSelecionada = document.getElementById('nomeFiliaCadastro').value;
       const cidadeCadastroSelect = document.getElementById('cidadeCadastro');
 
@@ -493,24 +528,24 @@ footer {
     }
 
     function consultar() {
-  const consultaData = document.getElementById('consultaData').value;
-  const filtroFilial = document.getElementById('filtroFilial').value;
+      const consultaData = document.getElementById('consultaData').value;
+      const filtroFilial = document.getElementById('filtroFilial').value;
 
-  const [anoConsulta, mesConsulta, diaConsulta] = consultaData.split('-');
+      const [anoConsulta, mesConsulta, diaConsulta] = consultaData.split('-');
 
-  const plantonistasFiltrados = plantonistas.filter(plantonista => {
-    const [anoPlantonista, mesPlantonista, diaPlantonista] = plantonista.dataInicio.split('-');
-    return (
-      anoConsulta === anoPlantonista &&
-      mesConsulta === mesPlantonista &&
-      diaConsulta === diaPlantonista &&
-      (filtroFilial === '' || plantonista.nomeFilia === filtroFilial)
-    );
-  });
+      const plantonistasFiltrados = plantonistas.filter(plantonista => {
+        const [anoPlantonista, mesPlantonista, diaPlantonista] = plantonista.dataInicio.split('-');
+        return (
+          anoConsulta === anoPlantonista &&
+          mesConsulta === mesPlantonista &&
+          diaConsulta === diaPlantonista &&
+          (filtroFilial === '' || plantonista.nomeFilia === filtroFilial)
+        );
+      });
 
-  let htmlResultado = `<h3>Plantonistas de ${consultaData}</h3>`;
-  if (plantonistasFiltrados.length > 0) {
-    htmlResultado += `
+      let htmlResultado = `<h3>Plantonistas de ${consultaData}</h3>`;
+      if (plantonistasFiltrados.length > 0) {
+        htmlResultado += `
   <table>
     <thead>
       <tr>
@@ -523,7 +558,7 @@ footer {
     </thead>
     <tbody>
       ${plantonistasFiltrados.map(plantonista => {
-        return `
+          return `
           <tr>
             <td>${plantonista.nomePlantonista}</td>
             <td>${plantonista.nomeFilia}</td>
@@ -535,39 +570,54 @@ footer {
                 alt="Chat com o plantonista"
                 width="40"
                 height="40"
-                onclick="window.open('https://api.whatsapp.com/send?phone=${55+plantonista.telefone}', '_blank')"style="padding-right: 0px;padding-left: 18px;"
+                onclick="window.open('https://api.whatsapp.com/send?phone=${55 + plantonista.telefone}', '_blank')"style="padding-right: 0px;padding-left: 18px;"
               />
             </td>
           </tr>
         `;
-      }).join('')}
+        }).join('')}
     </tbody>
   </table>
 `;
-  } else {
-    htmlResultado += '<p>Nenhum resultado encontrado para a data e/ou filial selecionadas.</p>';
-  }
+      } else {
+        htmlResultado += '<p>Nenhum resultado encontrado para a data e/ou filial selecionadas.</p>';
+      }
 
-  mostrarPopup(htmlResultado);
-}
-    function mostrarFormulario(tipoFormulario) {
-    limparResultado(); // Limpar resultado ao mudar de formulário
-    const cadastroForm = document.getElementById('cadastroForm');
-    const consultaForm = document.getElementById('consultaForm');
-    const footer = document.querySelector('footer');
-
-    cadastroForm.style.display = 'none';
-    consultaForm.style.display = 'none';
-
-    // Ocultar o footer se estiver no formulário de cadastro
-    if (tipoFormulario === 'cadastro') {
-      cadastroForm.style.display = 'block';
-      footer.style.display = 'none';
-    } else if (tipoFormulario === 'consulta') {
-      consultaForm.style.display = 'block';
-      footer.style.display = 'block'; // Mostrar o footer para outros formulários
+      mostrarPopup(htmlResultado);
     }
-  }
+    function mostrarFormulario(tipoFormulario) {
+      limparResultado(); // Limpar resultado ao mudar de formulário
+      const cadastroForm = document.getElementById('cadastroForm');
+      const consultaForm = document.getElementById('consultaForm');
+      const footer = document.querySelector('footer');
+
+      cadastroForm.style.display = 'none';
+      consultaForm.style.display = 'none';
+
+      // Ocultar o footer se estiver no formulário de cadastro
+      if (tipoFormulario === 'cadastro') {
+        cadastroForm.style.display = 'block';
+        footer.style.display = 'none';
+      } else if (tipoFormulario === 'consulta') {
+        consultaForm.style.display = 'block';
+        footer.style.display = 'block'; // Mostrar o footer para outros formulários
+      }
+    }
+
+    function abrirMapa() {
+  document.getElementById("iframe-mapa").style.display = "block";
+  document.getElementById("fecharMapa").style.display = "block";
+  document.getElementById("botao-mapa").style.display = "none";
+}
+
+function fecharMapa() {
+  document.getElementById("iframe-mapa").style.display = "none";
+  document.getElementById("fecharMapa").style.display = "none";
+  document.getElementById("botao-mapa").style.display = "block";
+}
+
   </script>
 </body>
+
 </html>
+
