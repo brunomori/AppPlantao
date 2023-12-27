@@ -351,6 +351,11 @@
       font-family: 'Klavika', Arial, sans-serif;
       /* Restante do seu estilo */
     }
+    #botao-mapa1 {
+  /* Adicione este estilo para garantir que ambos os botões tenham a mesma altura */
+   /* Altere conforme necessário para corresponder à altura desejada */
+   padding: 10px 38px;
+}
   </style>
   <title>Plantonista App</title>
   <link rel="apple-touch-icon" sizes="180x180" href="android-chrome-192x192.png">
@@ -390,8 +395,8 @@
           d="M12,12a2,2,0,1,1,2-2A2.006,2.006,0,0,1,12,12Zm6-1.8a6,6,0,1,0-12,0c0,2.34,1.95,5.44,6,9.14C16.05,15.64,18,12.54,18,10.2ZM12,2a7.955,7.955,0,0,1,8,8.2q0,4.98-8,11.8-8-6.825-8-11.8A7.955,7.955,0,0,1,12,2Z">
         </path>
       </svg>Localizar Filial:</label>
-    <input type="text" id="cidadeLocalizar" placeholder="Digite a cidade">
-    <button onclick="localizarFilial()">Verificar</button>
+    <input type="text" id="cidadeLocalizar" placeholder="Cidade sem acento">
+    <button onclick="localizarFilial()" id="botao-mapa1">Verificar</button>
     <iframe id="iframe-mapa" src="https://www.google.com/maps/d/embed?mid=1Me5MKZiG55diGOIpA9JM6N0zCeIpLio&ehbc=2E312F"
       width="540" height="380" style="display: none;"></iframe>
     <button id="fecharMapa" onclick="fecharMapa()" style="display: none;">Fechar</button>
