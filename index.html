@@ -23,16 +23,18 @@
     }
 
     @keyframes pulse {
-    0% {
-      transform: scale(1);
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.1);
+      }
+
+      100% {
+        transform: scale(1);
+      }
     }
-    50% {
-      transform: scale(1.1);
-    }
-    100% {
-      transform: scale(1);
-    }
-  }
 
     h1,
     h2,
@@ -51,7 +53,7 @@
     }
 
 
-    
+
     .form {
       max-width: 400px;
       width: 100%;
@@ -307,13 +309,10 @@
     .botao {
       width: 100%;
     }
-    
-    .botao-voltar {
-  width: 100%;
-}
-    
 
-    
+    .botao-voltar {
+      width: 100%;
+    }
   </style>
   <title>Plantonista App</title>
   <link rel="apple-touch-icon" sizes="180x180" href="android-chrome-192x192.png">
@@ -371,12 +370,12 @@
   </div>
   <h1 id="center">Plantonista App</h1>
 
-  
-    <div id="botoesOperacao">
-      <button id="botao-cadastro" onclick="mostrarFormulario('cadastro')">Cadastro</button>
-      <button id="botao-consulta" onclick="mostrarFormulario('consulta')">Consulta</button>
-    </div>
- 
+
+  <div id="botoesOperacao">
+    <button id="botao-cadastro" onclick="mostrarFormulario('cadastro')">Cadastro</button>
+    <button id="botao-consulta" onclick="mostrarFormulario('consulta')">Consulta</button>
+  </div>
+
 
   <!-- Formulário de Cadastro -->
 
@@ -392,9 +391,9 @@
       <option value="clig">Clig</option>
       <option value="desktop">Desktop</option>
     </select>
-
     <label for="telefone">Telefone:</label>
-    <input type="tel" id="telefone" required>
+    <input type="tel" id="telefone" required placeholder="dd+tel">
+    
 
     <label for="dataInicio">Data de Início do Plantão:</label>
     <input type="date" id="dataInicio" required>
@@ -410,7 +409,7 @@
 
     <button type="button" onclick="cadastrar()">Cadastrar</button>
     <!-- Botão de voltar -->
-<button onclick="voltarTelaInicial()">Voltar</button>
+    <button onclick="voltarTelaInicial()">Voltar</button>
 
   </form>
 
@@ -430,9 +429,9 @@
 
     <button type="button" class="botao" onclick="consultar()">Consultar</button>
     <!-- Botão de voltar -->
-<button onclick="voltarTelaInicial()" class="botao-voltar">Voltar</button>
+    <button onclick="voltarTelaInicial()" class="botao-voltar">Voltar</button>
 
-    
+
   </form>
 
   <div id="resultado"></div>
@@ -664,57 +663,57 @@
       document.getElementById("botao-mapa").style.display = "block";
     }
 
-// Função para mostrar o formulário desejado
-function mostrarFormulario(tipoFormulario) {
-  
-  limparResultado(); // Limpar resultado ao mudar de formulário
-  const cadastroForm = document.getElementById('cadastroForm');
-  const consultaForm = document.getElementById('consultaForm');
-  const botoesOperacao = document.getElementById('botoesOperacao');
-  const tituloH2 = document.getElementById('center'); // Adicionado para pegar o elemento h2
+    // Função para mostrar o formulário desejado
+    function mostrarFormulario(tipoFormulario) {
 
-  cadastroForm.style.display = 'none';
-  consultaForm.style.display = 'none';
+      limparResultado(); // Limpar resultado ao mudar de formulário
+      const cadastroForm = document.getElementById('cadastroForm');
+      const consultaForm = document.getElementById('consultaForm');
+      const botoesOperacao = document.getElementById('botoesOperacao');
+      const tituloH2 = document.getElementById('center'); // Adicionado para pegar o elemento h2
 
-  // Ocultar os botões de consulta e cadastro
-  botoesOperacao.style.display = 'none';
+      cadastroForm.style.display = 'none';
+      consultaForm.style.display = 'none';
 
-  if (tipoFormulario === 'cadastro') {
-    cadastroForm.style.display = 'block';
-    tituloH2.style.display = 'none'; // Oculta o elemento h2
-  } else if (tipoFormulario === 'consulta') {
-    consultaForm.style.display = 'block';
-    tituloH2.style.display = 'flex'; // Mostra o elemento h2 para outros formulários
-  }
-  
-}
-function voltarTelaInicial() {
-  const cadastroForm = document.getElementById('cadastroForm');
-  const consultaForm = document.getElementById('consultaForm');
-  const botoesOperacao = document.getElementById('botoesOperacao');
-  const tituloH2 = document.getElementById('center');
+      // Ocultar os botões de consulta e cadastro
+      botoesOperacao.style.display = 'none';
 
-  cadastroForm.style.display = 'none';
-  consultaForm.style.display = 'none';
-  botoesOperacao.style.display = 'flex';
-  tituloH2.style.display = 'flex';
+      if (tipoFormulario === 'cadastro') {
+        cadastroForm.style.display = 'block';
+        tituloH2.style.display = 'none'; // Oculta o elemento h2
+      } else if (tipoFormulario === 'consulta') {
+        consultaForm.style.display = 'block';
+        tituloH2.style.display = 'flex'; // Mostra o elemento h2 para outros formulários
+      }
 
-  // Resetar o formulário de cadastro
-  limparCamposCadastro();
+    }
+    function voltarTelaInicial() {
+      const cadastroForm = document.getElementById('cadastroForm');
+      const consultaForm = document.getElementById('consultaForm');
+      const botoesOperacao = document.getElementById('botoesOperacao');
+      const tituloH2 = document.getElementById('center');
 
-  // Limpar os campos do formulário de consulta
-  limparCamposConsulta();
-}
+      cadastroForm.style.display = 'none';
+      consultaForm.style.display = 'none';
+      botoesOperacao.style.display = 'flex';
+      tituloH2.style.display = 'flex';
+
+      // Resetar o formulário de cadastro
+      limparCamposCadastro();
+
+      // Limpar os campos do formulário de consulta
+      limparCamposConsulta();
+    }
 
 
-function limparCamposConsulta() {
-  // Adicione aqui qualquer código necessário para limpar os campos do formulário de consulta
-  const consultaData = document.getElementById('consultaData');
-  const filtroFilial = document.getElementById('filtroFilial');
+    function limparCamposConsulta() {
+      // Adicione aqui qualquer código necessário para limpar os campos do formulário de consulta
+      const consultaData = document.getElementById('consultaData');
+      const filtroFilial = document.getElementById('filtroFilial');
 
-  consultaData.value = '';
-  filtroFilial.value = '';
-}
+      consultaData.value = '';
+      filtroFilial.value = '';
+    }
 
 
 
