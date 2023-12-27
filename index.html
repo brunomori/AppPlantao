@@ -521,22 +521,35 @@
     };
 
     function localizarFilial() {
-      const cidadeLocalizar = document.getElementById('cidadeLocalizar').value.toLowerCase();
-      let filialEncontrada = '';
+  const cidadeLocalizar = document.getElementById('cidadeLocalizar').value.toLowerCase();
+  let filialEncontrada = '';
 
-      for (const filial in filiaisCidades) {
-        if (filiaisCidades[filial].includes(cidadeLocalizar)) {
-          filialEncontrada = filial;
-          break;
-        }
-      }
-
-      if (filialEncontrada) {
-        alert(`A cidade ${cidadeLocalizar} pertence à filial ${filialEncontrada.toUpperCase()}.`);
-      } else {
-        alert(`Não foi encontrada uma filial para a cidade ${cidadeLocalizar}.`);
-      }
+  for (const filial in filiaisCidades) {
+    if (filiaisCidades[filial].includes(cidadeLocalizar)) {
+      filialEncontrada = filial;
+      break;
     }
+  }
+
+  if (filialEncontrada) {
+    const modalContent = `
+      <div style="width: 380px; padding: 20px;">
+        <p style="font-size: 22px;">A cidade <strong style="text-decoration: underline;">${cidadeLocalizar}</strong> pertence à filial <strong style="text-decoration: underline;">${filialEncontrada.toUpperCase()}</strong>.</p>
+      </div>
+    `;
+    mostrarPopup(modalContent);
+  } else {
+    const modalContent = `
+      <div style="width: 400px; padding: 20px;">
+        <p style="font-size: 18px;">Não foi encontrada uma filial para a cidade <strong style="text-decoration: underline;">${cidadeLocalizar}</strong>.</p>
+      </div>
+    `;
+    mostrarPopup(modalContent);
+  }
+}
+
+
+
 
     // Função para limpar o conteúdo da div de resultado
     function limparResultado() {
