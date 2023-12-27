@@ -436,7 +436,13 @@
     </select>
     <label for="telefone">Telefone:</label>
     <input type="tel" id="telefone" required placeholder="dd+tel">
-
+    <form id="cadastroForm" style="display:none;">
+        <!-- ... (outros campos) ... -->
+        <label for="setor">Setor:</label>
+        <select id="setor" required>
+          <option value="NMC">NMC</option>
+          <option value="NOC">NOC</option>
+        </select>
 
     <label for="dataInicio">Data de Início do Plantão:</label>
     <input type="date" id="dataInicio" required>
@@ -563,6 +569,8 @@
       const dataFim = document.getElementById('dataFim').value;
       const horarioInicio = document.getElementById('horarioInicio').value;
       const horarioFim = document.getElementById('horarioFim').value;
+      const setor = document.getElementById('setor').value;
+
 
       const cadastro = {
         nomePlantonista,
@@ -572,6 +580,7 @@
         dataFim,
         horarioInicio,
         horarioFim,
+        setor,
       };
 
       plantonistas.push(cadastro);
@@ -635,26 +644,30 @@
       });
 
       let htmlResultado = `<h3>Plantonistas de ${consultaData}</h3>`;
-      if (plantonistasFiltrados.length > 0) {
-        htmlResultado += `
+  if (plantonistasFiltrados.length > 0) {
+    htmlResultado += `
       <table>
         <thead>
           <tr>
+            <tr>
             <th style="padding-right: 64px;">Nome</th>
             <th style="padding-right: 30px;">Filial</th>
             <th style="padding-right: 54px;">Telefone</th>
             <th style="padding-right: 30px;">Horário</th>
+            <th style="padding-right: 30px; padding-left: 5px;">Setor</th> 
             <th style="padding-right: 72px;">Whatsapp</th>
+          </tr>
           </tr>
         </thead>
         <tbody>
           ${plantonistasFiltrados.map(plantonista => {
-          return `
+            return `
               <tr>
                 <td>${plantonista.nomePlantonista}</td>
                 <td>${plantonista.nomeFilia}</td>
                 <td>${plantonista.telefone}</td>
                 <td>${plantonista.horarioInicio} - ${plantonista.horarioFim}</td>
+                <td>${plantonista.setor}</td> <!-- Adicione esta linha para o setor -->
                 <td>
                   <img
                     src="wpp.png"
@@ -667,16 +680,16 @@
                 </td>
               </tr>
             `;
-        }).join('')}
+          }).join('')}
         </tbody>
       </table>
     `;
-      } else {
-        htmlResultado += '<p>Nenhum resultado encontrado para a data e/ou filial selecionadas.</p>';
-      }
+  } else {
+    htmlResultado += '<p>Nenhum resultado encontrado para a data e/ou filial selecionadas.</p>';
+  }
 
-      mostrarPopup(htmlResultado);
-    }
+  mostrarPopup(htmlResultado);
+}
 
     function mostrarFormulario(tipoFormulario) {
       limparResultado(); // Limpar resultado ao mudar de formulário
