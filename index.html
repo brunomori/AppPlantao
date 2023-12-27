@@ -23,7 +23,7 @@
     }
 
 
-    
+
 
 
     @keyframes pulse {
@@ -202,9 +202,9 @@
 
     footer {
       padding-top: 0px;
-    padding-bottom: 0px;
+      padding-bottom: 0px;
       color: white;
-      background-color:#35302D;
+      background-color: #35302D;
       text-align: center;
       position: fixed;
       bottom: 0;
@@ -322,35 +322,35 @@
 
 
     #cadastroForm.estilo {
-  max-width: 400px;
-  width: 100%;
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
-}
-@font-face {
-  font-family: 'Klavika';
-  src: url('Klavika/klavika-regular-italic.otf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
+      max-width: 400px;
+      width: 100%;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
 
-@font-face {
-  font-family: 'Klavika-Bold';
-  src: url('Klavika/Klavika-Bold.ttf') format('truetype');
-  font-weight: bold;
-  font-style: normal;
-}
+    @font-face {
+      font-family: 'Klavika';
+      src: url('Klavika/klavika-regular-italic.otf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
 
-/* Adicione mais blocos @font-face para outras variações da fonte, se necessário */
+    @font-face {
+      font-family: 'Klavika-Bold';
+      src: url('Klavika/Klavika-Bold.ttf') format('truetype');
+      font-weight: bold;
+      font-style: normal;
+    }
 
-body {
-  font-family: 'Klavika', Arial, sans-serif;
-  /* Restante do seu estilo */
-}
+    /* Adicione mais blocos @font-face para outras variações da fonte, se necessário */
 
+    body {
+      font-family: 'Klavika', Arial, sans-serif;
+      /* Restante do seu estilo */
+    }
   </style>
   <title>Plantonista App</title>
   <link rel="apple-touch-icon" sizes="180x180" href="android-chrome-192x192.png">
@@ -427,11 +427,11 @@ body {
       <option value="">Selecione uma Filial</option>
       <option value="netbarretos">NetBarretos</option>
       <option value="clig">Clig</option>
-      <option value="desktop">Desktop</option>
+      <option value="LpNet">LpNet</option>
     </select>
     <label for="telefone">Telefone:</label>
     <input type="tel" id="telefone" required placeholder="dd+tel">
-    
+
 
     <label for="dataInicio">Data de Início do Plantão:</label>
     <input type="date" id="dataInicio" required>
@@ -462,7 +462,7 @@ body {
       <option value="">Todas as Filiais</option>
       <option value="netbarretos">NetBarretos</option>
       <option value="clig">Clig</option>
-      <option value="desktop">LpNet</option>
+      <option value="LpNet">LpNet</option>
     </select>
 
     <button type="button" class="botao" onclick="consultar()">Consultar</button>
@@ -503,8 +503,8 @@ body {
     const plantonistas = [];
 
     const filiaisCidades = {
-      Clig: ["araraquara", "sao carlos", "americo brasiliense", "ibate", "ibitinga","matao","descavaldo","santa lucia","rincao","guatapara","motuca","guariba","gaviao peixoto","nova europa","tabatinga","itapolis"],
-      Netbarretos: ["barretos", "bebedouro", "colina","Guaira","jaborandi","jaboticabal","olimpia","pitangueiras"],
+      Clig: ["araraquara", "sao carlos", "americo brasiliense", "ibate", "ibitinga", "matao", "descavaldo", "santa lucia", "rincao", "guatapara", "motuca", "guariba", "gaviao peixoto", "nova europa", "tabatinga", "itapolis"],
+      Netbarretos: ["barretos", "bebedouro", "colina", "Guaira", "jaborandi", "jaboticabal", "olimpia", "pitangueiras"],
       LpNet: ["aguas de santa barbara", "agudos", "alfredo guedes", "aparecida de sao manuel", "arandu", "areiopolis", "avare", "barra bonita", "bauru", "boa esperanca do sul", "bocaina", "borborema", "borebi", "botucatu", "botucatu", "candido rodrigues", "cerqueira cesar", "curupa", "dobrada", "dois corregos", "dourado", "fernando prestes", "gaviao peixoto", "guaianas", "guarapiranga", "holambra ii", "iaras", "igaracu do tiete", "ibitinga", "igaracu do tiete", "itai", "itajobi", "itapolis", "itapui", "itatinga", "jau", "lencois paulista", "lins", "macatuba", "manduri", "matao", "mineiros do tiete", "monte alto", "nova europa", "oleo", "paranapanema", "pardinho", "pederneiras", "pedro alexandrino", "pindorama", "piratininga", "potunduva", "pratania", "ribeirao bonito", "rubiao jr", "santa adelia", "santa ernestina", "sao carlos", "sao manuel", "serrinha", "tabatinga", "trabiju", "vangloria", "vitoriana"]
 
     };
@@ -612,26 +612,26 @@ body {
     }
 
     function consultar() {
-  const consultaData = document.getElementById('consultaData').value;
-  const filtroFilial = document.getElementById('filtroFilial').value;
+      const consultaData = document.getElementById('consultaData').value;
+      const filtroFilial = document.getElementById('filtroFilial').value;
 
-  const dataConsulta = new Date(consultaData); // Converter a string para um objeto Date
+      const dataConsulta = new Date(consultaData); // Converter a string para um objeto Date
 
-  const plantonistasFiltrados = plantonistas.filter(plantonista => {
-    const dataInicio = new Date(plantonista.dataInicio);
-    const dataFim = new Date(plantonista.dataFim);
+      const plantonistasFiltrados = plantonistas.filter(plantonista => {
+        const dataInicio = new Date(plantonista.dataInicio);
+        const dataFim = new Date(plantonista.dataFim);
 
-    // Comparar se a data de consulta está dentro do intervalo do plantão
-    return (
-      dataConsulta >= dataInicio &&
-      dataConsulta <= dataFim &&
-      (filtroFilial === '' || plantonista.nomeFilia === filtroFilial)
-    );
-  });
+        // Comparar se a data de consulta está dentro do intervalo do plantão
+        return (
+          dataConsulta >= dataInicio &&
+          dataConsulta <= dataFim &&
+          (filtroFilial === '' || plantonista.nomeFilia === filtroFilial)
+        );
+      });
 
-  let htmlResultado = `<h3>Plantonistas de ${consultaData}</h3>`;
-  if (plantonistasFiltrados.length > 0) {
-    htmlResultado += `
+      let htmlResultado = `<h3>Plantonistas de ${consultaData}</h3>`;
+      if (plantonistasFiltrados.length > 0) {
+        htmlResultado += `
       <table>
         <thead>
           <tr>
@@ -644,7 +644,7 @@ body {
         </thead>
         <tbody>
           ${plantonistasFiltrados.map(plantonista => {
-            return `
+          return `
               <tr>
                 <td>${plantonista.nomePlantonista}</td>
                 <td>${plantonista.nomeFilia}</td>
@@ -662,16 +662,16 @@ body {
                 </td>
               </tr>
             `;
-          }).join('')}
+        }).join('')}
         </tbody>
       </table>
     `;
-  } else {
-    htmlResultado += '<p>Nenhum resultado encontrado para a data e/ou filial selecionadas.</p>';
-  }
+      } else {
+        htmlResultado += '<p>Nenhum resultado encontrado para a data e/ou filial selecionadas.</p>';
+      }
 
-  mostrarPopup(htmlResultado);
-}
+      mostrarPopup(htmlResultado);
+    }
 
     function mostrarFormulario(tipoFormulario) {
       limparResultado(); // Limpar resultado ao mudar de formulário
