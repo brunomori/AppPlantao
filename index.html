@@ -319,6 +319,18 @@
     .botao-voltar {
       width: 100%;
     }
+
+
+    #cadastroForm.estilo {
+  max-width: 400px;
+  width: 100%;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
   </style>
   <title>Plantonista App</title>
   <link rel="apple-touch-icon" sizes="180x180" href="android-chrome-192x192.png">
@@ -377,7 +389,7 @@
   <h1 id="center">Plantonista App</h1>
 
 
-  <div id="botoesOperacao">
+  <div id="botoesOperacao" class="estilo">
     <button id="botao-cadastro" onclick="mostrarFormulario('cadastro')">Cadastro</button>
     <button id="botao-consulta" onclick="mostrarFormulario('consulta')">Consulta</button>
   </div>
