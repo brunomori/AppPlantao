@@ -1,0 +1,401 @@
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+
+  }
+
+
+
+
+
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+
+    50% {
+      transform: scale(1.1);
+    }
+
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  h1,
+  h2,
+  h3 {
+    color: #333;
+  }
+
+  form {
+    max-width: 400px;
+    width: 100%;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+
+
+
+  .form {
+    max-width: 400px;
+    width: 100%;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  input,
+  select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  button {
+    background-color: #861318;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 6px;
+  }
+
+  button:hover {
+    background-color: #86161cda;
+  }
+
+  #resultado {
+    margin-top: 20px;
+    padding: 0px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+
+  #resultado h3 {
+    color: #d0dad0;
+  }
+
+
+  #center {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 28px;
+    width: 100%;
+  }
+
+  #botoesOperacao {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  #localizarFilialForm {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  #localizarFilialForm label {
+    margin-bottom: 5px;
+  }
+
+  /* Popup Styles */
+  .popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+  }
+
+  .popup-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 80%;
+    overflow: auto;
+    position: relative;
+  }
+
+  .popup-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+  }
+
+  .align-items-center {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin-top: 64px;
+    margin-bottom: 0px;
+    align-items: center;
+    justify-content: space-around;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    background-color: #861318;
+    z-index: -1;
+    height: 76px;
+    max-height: 10%;
+  }
+
+  .align-items-center img {
+    width: auto;
+    height: 80%;
+    /* Ajuste conforme necessário */
+    max-width: 100%;
+    /* Garante que a imagem não ultrapasse sua largura original */
+  }
+
+
+  footer {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    color: white;
+    background-color: #35302D;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding-bottom: 0px;
+
+  }
+
+  footer a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    padding-bottom: 0px;
+
+  }
+
+
+  #cadastroForm #localizarFilialForm {
+    display: block;
+
+    #localizarFilialForm {
+      position: static;
+      margin-top: 10px;
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    #center {
+      margin-top: 10px;
+    }
+
+    #botoesOperacao {
+      flex-direction: column;
+    }
+
+    footer {
+      position: static;
+      bottom: auto;
+      padding: 10px;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    #localizarFilialForm {
+      display: block;
+    }
+  }
+
+
+
+
+  /* Mantenha esta regra original para telas maiores que 600px */
+  #localizarFilialForm {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex-wrap: nowrap;
+  }
+
+  /* Adicione esta regra para ajustar o estilo da label */
+  #localizarFilialForm label {
+    margin-bottom: 5px;
+    display: block;
+  }
+
+  /* Adicione esta regra para ajustar o estilo do input */
+  #localizarFilialForm input {
+    width: calc(100% - 20px);
+    /* Leve em consideração o padding de 10px em cada lado */
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  /* *************** */
+
+  #cadastroForm {
+    margin-top: 20px;
+  }
+
+  #cadastroForm h2 {
+    margin-bottom: 20px;
+  }
+
+  /* #cadastroForm label {
+    margin-top: 10px;
+  } */
+
+  #cadastroForm input,
+  #cadastroForm select,
+  #cadastroForm button {
+    margin-bottom: 8px;
+  }
+
+
+  #cadastroForm button {
+    width: 100%;
+  }
+
+  .botao {
+    width: 100%;
+  }
+
+  .botao-voltar {
+    width: 100%;
+  }
+
+
+  #cadastroForm.estilo {
+    max-width: 400px;
+    width: 100%;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+
+  @font-face {
+    font-family: 'Klavika';
+    src: url('Klavika/klavika-regular-italic.otf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Klavika-Bold';
+    src: url('Klavika/Klavika-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+  }
+
+  /* Adicione mais blocos @font-face para outras variações da fonte, se necessário */
+
+  body {
+    font-family: 'Klavika', Arial, sans-serif;
+    /* Restante do seu estilo */
+  }
+  #botao-mapa1 {
+/* Adicione este estilo para garantir que ambos os botões tenham a mesma altura */
+ /* Altere conforme necessário para corresponder à altura desejada */
+ padding: 10px 38px;
+}
+
+/* Adicione isto ao seu CSS existente para estilizar a tela de login */
+#loginForm {
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+background-color: rgba(255, 255, 255, 0.13);
+padding: 20px;
+border-radius: 8px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#loginForm form {
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+#loginForm h2 {
+color: #fff;
+margin-bottom: 20px;
+}
+
+#loginForm label {
+color: #fff;
+margin-bottom: 8px;
+}
+
+#loginForm input {
+width: 100%;
+padding: 8px;
+margin-bottom: 16px;
+box-sizing: border-box;
+border: 1px solid #ccc;
+border-radius: 4px;
+}
+
+#loginForm button {
+background-color: #861318;
+color: white;
+padding: 10px 15px;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+}
+
+#loginForm button:hover {
+background-color: #86161cda;
+}
+
+.esconder {
+    display: none;
+  }
