@@ -669,6 +669,7 @@
             <th style="padding-right: 65px;">Horário</th>
             <th style="padding-right: 30px;">Setor</th>
             <th style="padding-right: 72px;">Whatsapp</th>
+            <th style="padding-right: 72px;">Ação</th> <!-- Adicione esta coluna para o botão de deletar -->
           </tr>
           </tr>
         </thead>
@@ -691,6 +692,7 @@
                     style="padding-right: 0px; padding-left: 22px; cursor: pointer; animation: pulse 1s infinite;"
                   />
                 </td>
+                <td>${criarBotaoDeletar(plantonista.nomePlantonista)}</td> <!-- Adicione esta coluna para o botão de deletar -->
               </tr>
             `;
           }).join('')}
@@ -787,6 +789,27 @@
       filtroFilial.value = '';
     }
 
+    function criarBotaoDeletar(nomePlantonista) {
+  return `
+    <button onclick="deletarPlantonista('${nomePlantonista}')">
+      Deletar
+    </button>
+  `;
+}
+
+function deletarPlantonista(nomePlantonista) {
+  const confirmacao = confirm(`Deseja realmente deletar ${nomePlantonista}?`);
+
+  if (confirmacao) {
+    const indice = plantonistas.findIndex(plantonista => plantonista.nomePlantonista === nomePlantonista);
+
+    if (indice !== -1) {
+      plantonistas.splice(indice, 1);
+      alert(`${nomePlantonista} deletado com sucesso!`);
+      consultar(); // Atualiza a lista após a exclusão
+    }
+  }
+}
 
 
 
