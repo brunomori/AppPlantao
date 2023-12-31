@@ -323,10 +323,30 @@ function login() {
 
   if (username === 'admin' && password === 'admin') {
     alert('Login bem-sucedido!');
+    window.location.href = 'index.html';
   } else {
     alert('Credenciais inválidas. Tente novamente.');
   }
 }
 
 
+function semLogin() {
+  alert('Função semLogin chamada!');
+  // Adicionando um parâmetro à URL para indicar que o botão deve ser ocultado
+  window.location.href = 'index.html?ocultarBotao=true';
+}
 
+document.addEventListener('DOMContentLoaded', function () {
+  // Verificar se o parâmetro 'ocultarBotao' está presente na URL
+  const urlParams = new URLSearchParams(window.location.search);
+  const ocultarBotao = urlParams.get('ocultarBotao');
+
+  if (ocultarBotao === 'true') {
+    var btn1 = document.querySelector('.btn1');
+    if (btn1) {
+      btn1.style.display = 'none';
+    }
+  }
+});
+
+// fazer um link ref com a logo da desktop para a pagina de login.
