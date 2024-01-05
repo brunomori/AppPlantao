@@ -54,7 +54,7 @@ function localizarFilial() {
 
 
 
-// Função para limpar o conteúdo da div de resultado
+// Função para limpar o conteúdo da div de resultado.
 function limparResultado() {
   const resultadoDiv = document.getElementById('resultado');
   resultadoDiv.innerHTML = '';
