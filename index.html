@@ -30,9 +30,9 @@
   </div>
 
 
-  <div id="localizarFilialForm">
 
-    <label for="cidadeLocalizar"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="18" viewBox="0 0 24 24"
+  <div id="localizarFilialForm">
+    <label for="cidadeLocalizar"><svg xmlns="http://www.w3.org/2000/svg" width="38" height="18" viewBox="0 0 24 24"
         style="margin-top: -4px;">
         <defs>
           <style>
@@ -53,7 +53,7 @@
     <input type="text" id="cidadeLocalizar" placeholder="Cidade sem acento">
     <button onclick="localizarFilial()" id="botao-mapa1">Verificar</button>
     <iframe id="iframe-mapa" src="https://www.google.com/maps/d/embed?mid=1Me5MKZiG55diGOIpA9JM6N0zCeIpLio&ehbc=2E312F"
-      width="690" height="650" style="display: none;"></iframe>
+      width="685" height="630" style="display: none;"></iframe>
     <button id="fecharMapa" onclick="fecharMapa()" style="display: none;">Fechar</button>
     <button id="botao-mapa" onclick="abrirMapa()">Visualizar Mapa</button>
 
@@ -64,21 +64,26 @@
 
 
   <div class="align-items-center">
-    <img src="https://assinedesktop.com/static/img/new/logo-2x-low.png" alt="" height="50px" class="img-responsive">
+    <img src="https://assinedesktop.com/static/img/new/logo-2x-low.png" alt="" height="50px" class="img-responsive" >
   </div>
-
-  <h1 id="center">Plantonista App</h1>
+  
+ 
+  <h1 id="center">Plantonista App
+    
+  </h1>
 
 
   <div id="botoesOperacao" class="estilo">
     <button id="botao-cadastro" onclick="mostrarFormulario('cadastro')" class="btn1">Cadastro</button>
-    <button id="botao-consulta" onclick="mostrarFormulario('consulta')">Consulta</button>
+    <button id="botao-consulta" onclick="mostrarFormulario('consulta')">Consulta Detalhada</button>
+    <button id="botao-plantao" onclick="mostrarFormulario('plantao')">Plantão do Dia</button>
+
   </div>
 
 
   <!-- Formulário de Cadastro -->
 
-  <form id="cadastroForm" style="display:none;">
+  <form id="cadastroForm" style="display:none;" class="form">
     <h2>Cadastrar Informações</h2>
     <label for="nomePlantonista">Nome do Plantonista:</label>
     <input type="text" id="nomePlantonista" required>
@@ -119,7 +124,7 @@
     </form>
 
     <!-- Formulário de Consulta -->
-    <form id="consultaForm" style="display:none;">
+    <form id="consultaForm" style="display:none;" class="ResposivoConsultaDetalhada">
       <h2>Consultar Informações</h2>
       <label for="consultaData">Data:</label>
       <input type="date" id="consultaData" required>
@@ -139,17 +144,34 @@
 
     </form>
 
+    <!-- Formulário de Plantão do Dia -->
+<form id="plantaoForm" style="display:none;" class="ResposivoConsultaDetalhada">
+  <h2>Plantão do Dia</h2>
+  <label for="plantaoCidade">Cidade:</label>
+  <input type="text" id="plantaoCidade" placeholder="Cidade sem acento">
+
+  <button type="button" onclick="plantaoDoDia()">Verificar</button>
+  <!-- Botão de voltar -->
+  <button onclick="voltarTelaInicial()">Voltar</button>
+</form>
+
+
     <div id="resultado"></div>
 
 
     <footer>
-      <p>
+     
         Desenvolvido por <a href="https://www.linkedin.com/in/bruno-manzini-mori-a9b138b5/" target="_blank">Bruno
           Manzini</a>
-           
-      </p>
+          
+          <a href="login.html">
+            <img src="enter.png" alt="" width="38" height="38" 
+             class="saida">
+          </a>
+     
     </footer>
-    <a href="login.html">Login</a>
+
+
     <script src="logica.js" defer></script>
 </body>
 

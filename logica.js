@@ -54,7 +54,7 @@ function localizarFilial() {
 
 
 
-// Função para limpar o conteúdo da div de resultado.
+// Função para limpar o conteúdo da div de resultado
 function limparResultado() {
   const resultadoDiv = document.getElementById('resultado');
   resultadoDiv.innerHTML = '';
@@ -65,16 +65,62 @@ function mostrarFormulario(tipoFormulario) {
   limparResultado(); // Limpar resultado ao mudar de formulário
   const cadastroForm = document.getElementById('cadastroForm');
   const consultaForm = document.getElementById('consultaForm');
+  const botoesOperacao = document.getElementById('botoesOperacao');
+  const tituloH2 = document.getElementById('center'); // Adicionado para pegar o elemento h2
+  
+  
 
   cadastroForm.style.display = 'none';
   consultaForm.style.display = 'none';
 
-  if (tipoFormulario === 'cadastro') {
-    cadastroForm.style.display = 'block';
-  } else if (tipoFormulario === 'consulta') {
-    consultaForm.style.display = 'block';
+  // Ocultar os botões de consulta e cadastro
+  botoesOperacao.style.display = 'none';
+  const nomePlantonista = document.getElementById('nomePlantonista').value;
+  const nomeFilia = document.getElementById('nomeFiliaCadastro').value;
+  const telefone = document.getElementById('telefone').value;
+  const dataInicio = document.getElementById('dataInicio').value;
+  const dataFim = document.getElementById('dataFim').value;
+  const horarioInicio = document.getElementById('horarioInicio').value;
+  const horarioFim = document.getElementById('horarioFim').value;
+  const setor = document.getElementById('setor').value;
+  
+  const cadastro = {
+    nomePlantonista,
+    nomeFilia,
+    telefone,
+    dataInicio,
+    dataFim,
+    horarioInicio,
+    horarioFim,
+    setor,
+  };
+  
+  plantonistas.push(cadastro);
+
+
+
+
+  
+  // Exibir o formulário especificado
+  switch (tipoFormulario) {
+    case 'cadastro':
+      cadastroForm.style.display = 'block';
+      tituloH2.style.display = 'none'; // Oculta o elemento h2
+      break;
+    case 'consulta':
+      consultaForm.style.display = 'block';
+      tituloH2.style.display = 'flex'; // Mostra o elemento h2 para outros formulários
+      break;
+    case 'plantao':
+      document.getElementById('plantaoCidade').focus(); // Coloca o foco no campo da cidade
+      document.getElementById('plantaoForm').style.display = 'block'; // Exibe o formulário
+      break;
+    default:
+      console.log(`Tipo de formulário inválido: ${tipoFormulario}`);
   }
 }
+
+
 
 function cadastrar() {
   limparResultado(); // Limpar resultado ao cadastrar
@@ -143,7 +189,9 @@ function carregarCidadesConsulta() {
 
 function consultar() {
   const consultaData = document.getElementById('consultaData').value;
-  const filtroFilial = document.getElementById('filtroFilial').value;
+  const filtroFilial = document.getElementById('filtroFilial');
+
+  limparResultado(); // Limpar resultado ao mudar de formulário
 
   const dataConsulta = new Date(consultaData); // Converter a string para um objeto Date
 
@@ -155,53 +203,49 @@ function consultar() {
     return (
       dataConsulta >= dataInicio &&
       dataConsulta <= dataFim &&
-      (filtroFilial === '' || plantonista.nomeFilia === filtroFilial)
+      (filtroFilial.value === '' || plantonista.nomeFilia === filtroFilial.value)
     );
   });
 
   let htmlResultado = `<h3>Plantonistas de ${consultaData}</h3>`;
   if (plantonistasFiltrados.length > 0) {
     htmlResultado += `
-<table>
-  <thead>
-    <tr>
-      <tr>
-      <th style="padding-right: 64px;">Nome</th>
-      <th style="padding-right: 30px;">Filial</th>
-      <th style="padding-right: 54px;">Telefone</th>
-      <th style="padding-right: 65px;">Horário</th>
-      <th style="padding-right: 30px;">Setor</th>
-      <th style="padding-right: 72px;">Whatsapp</th>
-      <th style="padding-right: 72px;">Ação</th> <!-- Adicione esta coluna para o botão de deletar -->
-    </tr>
-    </tr>
-  </thead>
-  <tbody>
-    ${plantonistasFiltrados.map(plantonista => {
-      return `
-        <tr>
-          <td>${plantonista.nomePlantonista}</td>
-          <td>${plantonista.nomeFilia}</td>
-          <td>${plantonista.telefone}</td>
-          <td>${plantonista.horarioInicio} - ${plantonista.horarioFim}</td>
-          <td>${plantonista.setor}</td> <!-- Adicione esta linha para o setor -->
-          <td>
-            <img
-              src="wpp.png"
-              alt="Chat com o plantonista"
-              width="35"
-              height="35"
-              onclick="window.open('https://api.whatsapp.com/send?phone=${55 + plantonista.telefone}', '_blank')"
-              style="padding-right: 0px; padding-left: 22px; cursor: pointer; animation: pulse 1s infinite;"
-            />
-          </td>
-          <td>${criarBotaoDeletar(plantonista.nomePlantonista)}</td> <!-- Adicione esta coluna para o botão de deletar -->
-        </tr>
-      `;
-    }).join('')}
-  </tbody>
-</table>
-`;
+      <table>
+        <thead>
+          <tr>
+            <th style="padding-right: 64px;">Nome</th>
+            <th style="padding-right: 30px;">Filial</th>
+            <th style="padding-right: 54px;">Telefone</th>
+            <th style="padding-right: 65px;">Horário</th>
+            <th style="padding-right: 30px;">Setor</th>
+            <th style="padding-right: 72px;">Whatsapp</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${plantonistasFiltrados.map(plantonista => {
+            return `
+              <tr>
+                <td>${plantonista.nomePlantonista}</td>
+                <td>${plantonista.nomeFilia}</td>
+                <td>${plantonista.telefone}</td>
+                <td>${plantonista.horarioInicio} - ${plantonista.horarioFim}</td>
+                <td>${plantonista.setor}</td>
+                <td>
+                  <img
+                    src="wpp.png"
+                    alt="Chat com o plantonista"
+                    width="35"
+                    height="35"
+                    onclick="window.open('https://api.whatsapp.com/send?phone=${55 + plantonista.telefone}', '_blank')"
+                    style="padding-right: 0px; padding-left: 22px; cursor: pointer; animation: pulse 1s infinite;"
+                  />
+                </td>
+              </tr>
+            `;
+          }).join('')}
+        </tbody>
+      </table>
+    `;
   } else {
     htmlResultado += '<p>Nenhum resultado encontrado para a data e/ou filial selecionadas.</p>';
   }
@@ -209,30 +253,22 @@ function consultar() {
   mostrarPopup(htmlResultado);
 }
 
-function mostrarFormulario(tipoFormulario) {
-  limparResultado(); // Limpar resultado ao mudar de formulário
-  const cadastroForm = document.getElementById('cadastroForm');
-  const consultaForm = document.getElementById('consultaForm');
-  const footer = document.querySelector('footer');
 
-  cadastroForm.style.display = 'none';
-  consultaForm.style.display = 'none';
 
-  // Ocultar o footer se estiver no formulário de cadastro
-  if (tipoFormulario === 'cadastro') {
-    cadastroForm.style.display = 'block';
-    footer.style.display = 'none';
-  } else if (tipoFormulario === 'consulta') {
-    consultaForm.style.display = 'block';
-    footer.style.display = 'block'; // Mostrar o footer para outros formulários
-  }
-}
 
 function abrirMapa() {
-  document.getElementById("iframe-mapa").style.display = "block";
   document.getElementById("fecharMapa").style.display = "block";
   document.getElementById("botao-mapa").style.display = "none";
-}
+  var larguraTela = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+  
+  if (larguraTela <= 600) {
+  window.open("https://www.google.com/maps/d/embed?mid=1Me5MKZiG55diGOIpA9JM6N0zCeIpLio&ehbc=2E312F", "_blank"); // Abre a nova página em uma nova guia/janela
+  } else {
+  if (document.getElementById("iframe-mapa").style.display === "none") {
+  document.getElementById("iframe-mapa").style.display = "block";
+  }
+  }
+  }
 
 function fecharMapa() {
   document.getElementById("iframe-mapa").style.display = "none";
@@ -240,30 +276,11 @@ function fecharMapa() {
   document.getElementById("botao-mapa").style.display = "block";
 }
 
-// Função para mostrar o formulário desejado
-function mostrarFormulario(tipoFormulario) {
 
-  limparResultado(); // Limpar resultado ao mudar de formulário
-  const cadastroForm = document.getElementById('cadastroForm');
-  const consultaForm = document.getElementById('consultaForm');
-  const botoesOperacao = document.getElementById('botoesOperacao');
-  const tituloH2 = document.getElementById('center'); // Adicionado para pegar o elemento h2
 
-  cadastroForm.style.display = 'none';
-  consultaForm.style.display = 'none';
 
-  // Ocultar os botões de consulta e cadastro
-  botoesOperacao.style.display = 'none';
+  
 
-  if (tipoFormulario === 'cadastro') {
-    cadastroForm.style.display = 'block';
-    tituloH2.style.display = 'none'; // Oculta o elemento h2
-  } else if (tipoFormulario === 'consulta') {
-    consultaForm.style.display = 'block';
-    tituloH2.style.display = 'flex'; // Mostra o elemento h2 para outros formulários
-  }
-
-}
 function voltarTelaInicial() {
   const cadastroForm = document.getElementById('cadastroForm');
   const consultaForm = document.getElementById('consultaForm');
@@ -346,7 +363,87 @@ document.addEventListener('DOMContentLoaded', function () {
     if (btn1) {
       btn1.style.display = 'none';
     }
+    
   }
+  
 });
 
-// fazer um link ref com a logo da desktop para a pagina de login.
+
+
+
+function plantaoDoDia() {
+
+  localStorage.setItem('cidadePlantao', document.getElementById('plantaoCidade').value);
+
+  limparResultado(); // Limpar resultado ao realizar o plantão do dia
+  const dataAtual = new Date();
+  const cidadePlantao = localStorage.getItem('cidadePlantao');
+
+  // Verifica se a cidade informada é válida
+
+  const cidadeEncontrada = Object.values(filiaisCidades).some(cidadesFilial => {
+    return cidadesFilial.some(cidade => cidade.toLowerCase() === cidadePlantao.toLowerCase());
+  });
+
+  if (!cidadeEncontrada) {
+    alert('Cidade inválida.');
+    return;
+  }
+
+  const plantonistasDoDia = plantonistas.filter(plantonista => {
+    const dataInicio = new Date(plantonista.dataInicio);
+    const dataFim = new Date(plantonista.dataFim);
+
+    return (
+      dataAtual >= dataInicio &&
+      dataAtual <= dataFim &&
+      plantonista.nomeCidade === cidadePlantao
+    );
+  });
+
+  let htmlResultado = `<h3>Plantonistas do Dia em ${cidadePlantao}</h3>`;
+  if (plantonistasDoDia.length > 0) {
+    htmlResultado += `
+      <table>
+        <thead>
+          <tr>
+            <th style="padding-right: 64px;">Nome</th>
+            <th style="padding-right: 30px;">Filial</th>
+            <th style="padding-right: 54px;">Telefone</th>
+            <th style="padding-right: 65px;">Horário</th>
+            <th style="padding-right: 30px;">Setor</th>
+            <th style="padding-right: 72px;">Whatsapp</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${plantonistasDoDia.map(plantonista => {
+            return `
+              <tr>
+                <td>${plantonista.nomePlantonista}</td>
+                <td>${plantonista.nomeFilia}</td>
+                <td>${plantonista.telefone}</td>
+                <td>${plantonista.horarioInicio} - ${plantonista.horarioFim}</td>
+                <td>${plantonista.setor}</td>
+                <td>
+                  <img
+                    src="wpp.png"
+                    alt="Chat com o plantonista"
+                    width="35"
+                    height="35"
+                    onclick="window.open('https://api.whatsapp.com/send?phone=${55 + plantonista.telefone}', '_blank')"
+                    style="padding-right: 0px; padding-left: 22px; cursor: pointer; animation: pulse 1s infinite;"
+                   />
+                </td>
+              </tr>
+            `;
+          }).join('')}
+        </tbody>
+      </table>
+    `;
+  } else {
+    htmlResultado += '<p>Nenhum resultado encontrado para o plantão do dia.</p>';
+  }
+
+  mostrarPopup(htmlResultado);
+  console.log('Resultado:', htmlResultado);
+}

@@ -11,10 +11,6 @@ body {
 
   }
 
-
-
-
-
   @keyframes pulse {
     0% {
       transform: scale(1);
@@ -36,7 +32,7 @@ body {
   }
 
   form {
-    max-width: 400px;
+    max-width: 390px;
     width: 100%;
     background-color: #fff;
     padding: 20px;
@@ -48,7 +44,7 @@ body {
 
 
   .form {
-    max-width: 400px;
+    max-width: 390px;
     width: 100%;
     background-color: #fff;
     padding: 20px;
@@ -190,25 +186,21 @@ body {
 
 
   footer {
-    padding-top: 0px;
-    padding-bottom: 0px;
-    color: white;
-    background-color: #35302D;
+    padding: 7px 0; /* Reduzi o padding top e bottom para 10px */
+    color: black;
     text-align: center;
     position: fixed;
     bottom: 0;
     width: 100%;
-    padding-bottom: 0px;
+   
+}
 
-  }
-
-  footer a {
+footer a {
     text-decoration: none;
-    color: white;
+    color: black;
     font-weight: bold;
-    padding-bottom: 0px;
+}
 
-  }
 
 
   #cadastroForm #localizarFilialForm {
@@ -240,7 +232,39 @@ body {
     #localizarFilialForm {
       display: block;
     }
+  
+    #botao-mapa {
+      /* Adicione estilos específicos para o botão de visualizar mapa em telas menores */
+      display: block;
+    }
+  
+    #iframe-mapa {
+      /* Adicione estilos específicos para o iframe em telas menores */
+      display: none;
+    }
+
+    .popup-content {
+      max-width: 100%;
+
+
   }
+
+  .form{
+    width: 306px;
+    height: 700px;
+    margin-top: 167px;
+    
+  }
+
+  .ResposivoConsultaDetalhada{
+    width: 306px;
+  }
+
+  
+
+  
+  }
+  
 
 
 
@@ -311,7 +335,7 @@ body {
 
 
   #cadastroForm.estilo {
-    max-width: 400px;
+    max-width: 390px;
     width: 100%;
     background-color: #fff;
     padding: 20px;
@@ -399,3 +423,16 @@ background-color: #86161cda;
 .esconder {
     display: none;
   }
+
+
+  .saida {
+    position: fixed;
+    bottom: 0; /* Defina a distância em relação ao rodapé como 0 para alinhar ao rodapé */
+    right: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 3px;
+    margin-right: 1rem;
+
+}
